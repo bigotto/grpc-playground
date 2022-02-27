@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package task;
+
+service TaskService {
+  rpc FindOne (TaskById) returns (Task);
+  rpc FindAll (Empty) returns (TaskList);
+  rpc UpdateStatus (TaskById) returns (Task);
+}
+
+message Empty {}
+
+message TaskById {
+  int32 id = 1;
+}
+
+message Task {
+  int32 id = 1;
+  string description = 2;
+  bool done = 3;
+}
+
+message TaskList {
+  repeated Task tasklist = 1;
+}
